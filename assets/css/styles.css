@@ -1,0 +1,44 @@
+@font-face {
+  font-family: externalFont;
+  src: url(/assets/Fraunces-VariableFont_SOFT\,WONK\,opsz\,wght.ttf);
+}
+
+* {
+  font-family: externalFont;
+}
+
+.jumbotron {
+  background-image: url("/assets/img/Coding.jpg");
+  background-size: cover;
+  border-radius: 0;
+  min-height: 95vh;
+  padding-top: 15%;
+}
+
+.hidden {
+  visibility: hidden;
+  height: 0;
+}
+
+nav {
+  background: linear-gradient(to right top,rgb(0, 46, 105),rgb(61, 121, 241));
+}
+
+footer {
+  background: linear-gradient(to right top,rgb(0, 46, 105),rgb(61, 121, 241));
+}
+
+footer a {
+  text-decoration: none;
+  color: rgb(251, 255, 199);
+}
+
+footer a:hover {
+  text-decoration: none;
+  color: black;
+}
+
+div div p {
+  color: rebeccapurple;
+  line-height: 2;
+}
