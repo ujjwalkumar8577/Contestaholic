@@ -1,6 +1,6 @@
 @font-face {
   font-family: externalFont;
-  src: url(/assets/Fraunces-VariableFont_SOFT\,WONK\,opsz\,wght.ttf);
+  src: url(../Fraunces-VariableFont_SOFT\,WONK\,opsz\,wght.ttf);
 }
 
 * {
@@ -8,7 +8,7 @@
 }
 
 .jumbotron {
-  background-image: url("/assets/img/Coding.jpg");
+  background-image: url("../img/Coding.jpg");
   background-size: cover;
   border-radius: 0;
   min-height: 95vh;
