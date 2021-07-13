@@ -15,6 +15,12 @@ document.getElementById('contactButton').onclick = function() {
     contactSuccess.innerHTML = '<div class="alert alert-success alert-dismissible fade show" role="alert"> Message received successfully <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> </div>';
 };
 
+document.getElementById('inputGroupSelect').onchange = function() {
+    arg = inputGroupSelect.value;
+    document.getElementById('loading').classList.remove('hidden');
+    showTable(arg);
+}
+
 function showTable(arg) {
     console.log(arg);
     url = "https://kontests.net/api/v1/" + arg;
