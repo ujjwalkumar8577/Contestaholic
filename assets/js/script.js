@@ -1,4 +1,6 @@
-sites = [["CodeForces","codeforces","https://codeforces.com"],["CodeForces::Gym","codeforces_gym","https://codeforces.com/gyms"],["TopCoder","top_coder","https://topcoder.com"],["AtCoder","at_coder","https://atcoder.jp"],["CS Academy","cs_academy","https://csacademy.com"],["CodeChef","code_chef","https://codechef.com"],["HackerRank","hacker_rank","https://hackerrank.com"],["HackerEarth","hacker_earth","https://hackerearth.com"],["Kick Start","kick_start","https://codingcompetitions.withgoogle.com/kickstart"],["LeetCode","leet_code","https://leetcode.com"]];
+let clientLanguage = clientInformation.language
+let clientTimezone = 'Asia/Tokyo'
+let sites = [["CodeForces","codeforces","https://codeforces.com"],["CodeForces::Gym","codeforces_gym","https://codeforces.com/gyms"],["TopCoder","top_coder","https://topcoder.com"],["AtCoder","at_coder","https://atcoder.jp"],["CS Academy","cs_academy","https://csacademy.com"],["CodeChef","code_chef","https://codechef.com"],["HackerRank","hacker_rank","https://hackerrank.com"],["HackerEarth","hacker_earth","https://hackerearth.com"],["Kick Start","kick_start","https://codingcompetitions.withgoogle.com/kickstart"],["LeetCode","leet_code","https://leetcode.com"]];
 
 sites.forEach(arr => {
     contestDropdown.innerHTML += '<a class="dropdown-item" target="_blank" href="' +arr[2]+ '">' +arr[0]+ '</a>\n';
@@ -12,7 +14,11 @@ document.getElementById('goButton').onclick = function() {
 };
 
 document.getElementById('contactButton').onclick = function() {
-    contactSuccess.innerHTML = '<div class="alert alert-success alert-dismissible fade show" role="alert"> Message received successfully <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> </div>';
+    let name = (inputName.value).trim()
+    let email = (inputEmail.value).trim()
+    let message = (inputMessage.value).trim()
+    if(name!="" && email!="" && message!="")
+        contactSuccess.innerHTML = '<div class="alert alert-success alert-dismissible fade show" role="alert"> Message received successfully <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> </div>';
 };
 
 document.getElementById('inputGroupSelect').onchange = function() {
@@ -26,10 +32,9 @@ function showTable(arg) {
     url = "https://kontests.net/api/v1/" + arg;
     if(sessionStorage.getItem(url)==undefined) {
         fetch(url)
-            //Response resolves to a readable stream, 
-            //so this statement helps us convert it into a static object
+            //Response resolves to a readable stream, so convert it into a static object
             .then(response => response.json()) 
-            //Now that we have the data, let us see what it looks like in console
+            //Now we have the data, let us see what it looks like in console
             .then(responseData => {
                 sessionStorage.setItem(url,JSON.stringify(responseData));
                 createHTML(responseData);
@@ -46,6 +51,9 @@ function createHTML(jsonData) {
     tmp = '';
     counter = 1;
     jsonData.forEach(e => {
+        // IST Timezone
+        // start_time = new Date(e['start_time'].toLocaleString(clientLanguage, { timeZone: clientTimezone }));
+        // end_time = new Date(e['end_time'].toLocaleString(clientLanguage, { timeZone: clientTimezone }));
 
         start_time = new Date(e['start_time'].toLocaleString('en-US', { timeZone: 'Asia/Kolkata' }));
         end_time = new Date(e['end_time'].toLocaleString('en-US', { timeZone: 'Asia/Kolkata' }));
@@ -83,7 +91,6 @@ function sortByProperty(property) {
  };
 
  function getTimeString(time) {
-
     days = Math.floor(time/86400);
     time = time%86400;
     hrs = Math.floor(time/3600);

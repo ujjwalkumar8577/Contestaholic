@@ -30,7 +30,7 @@ footer {
 
 footer a {
   text-decoration: none;
-  color: rgb(251, 255, 199);
+  color: lightcyan;
 }
 
 footer a:hover {
@@ -39,6 +39,9 @@ footer a:hover {
 }
 
 div div p {
+  margin: 10px;
+  margin-bottom: 30px;
+  font-size: larger;
   color: rebeccapurple;
   line-height: 2;
 }
